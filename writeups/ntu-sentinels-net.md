@@ -28,7 +28,7 @@ nmap <TARGET_IP> -sS -p-
 It appears that ...
 
 
-**3. Interacting with web configuration page on port 8080 `/config` page**
+**4. Interacting with web configuration page on port 8080 `/config` page**
 <img width="714" height="422" alt="image" src="https://github.com/user-attachments/assets/67f24218-da2f-46d4-b9e5-b383f610f286" />
 
 - Notice that the value `val3` (input to "Router IP" field) appears in the boot logs:
