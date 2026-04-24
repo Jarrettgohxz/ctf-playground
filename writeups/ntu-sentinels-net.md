@@ -39,10 +39,9 @@ It appears that ...
 
 This error message indicates that we have given an invalid IP address value to the "Central Management Server IP" field in the web configuration page:
 
+- Try with ; | show that it is filtered in the boot logs
 
-<img width="654" height="429" alt="image" src="https://github.com/user-attachments/assets/173be35f-4e14-439a-8d05-d2739ba1a847" />
-<img width="654" height="428" alt="image" src="https://github.com/user-attachments/assets/a6fdd0e1-4f35-4d01-a2bc-298a7997c48d" />
-<img width="654" height="331" alt="image" src="https://github.com/user-attachments/assets/ce8fc0e9-65d7-4a86-9991-dcbf11e464ea" />
+
 <img width="736" height="439" alt="image" src="https://github.com/user-attachments/assets/6760d15b-d4be-4be1-a064-cd87b7902e4b" />
 <img width="736" height="336" alt="image" src="https://github.com/user-attachments/assets/3e9b96f1-6560-4c4b-acc5-de81a994d977" />
 <img width="438" height="89" alt="image" src="https://github.com/user-attachments/assets/b8028d4b-d88b-40bc-a1bd-922c00e96520" />
