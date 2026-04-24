@@ -1,4 +1,4 @@
-<img width="654" height="619" alt="image" src="https://github.com/user-attachments/assets/0842bc34-fe3f-4f5e-b01e-33a2c98a2df8" /><img width="613" height="68" alt="image" src="https://github.com/user-attachments/assets/0152549c-d379-4745-bbe5-726d08230cf6" /># Introduction
+# Introduction
 This challenge requires ...
 Custom challenge link: https://tryhackme.com/room/defcon2026ntusentinels
 
@@ -37,10 +37,7 @@ It appears that ...
 - Also, we get an error message: "Failed to connect to Central Management Server at XXXX":
 <img width="654" height="309" alt="image" src="https://github.com/user-attachments/assets/71bf3e1e-5805-4d74-b473-85f0bca9d5e7" />
 
-This error message is given because we have given an invalid IP address value to the "Central Management Server IP" field in the web configuration page:
-
-
-
+This error message indicates that we have given an invalid IP address value to the "Central Management Server IP" field in the web configuration page:
 
 
 <img width="654" height="429" alt="image" src="https://github.com/user-attachments/assets/173be35f-4e14-439a-8d05-d2739ba1a847" />
