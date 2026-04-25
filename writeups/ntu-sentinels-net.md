@@ -25,21 +25,28 @@ nmap <TARGET_IP> -sS -p-
 
 - Suspicious looking commands:
 <img width="613" height="68" alt="image" src="https://github.com/user-attachments/assets/309d9ba1-41d9-47e9-8417-b3e2ca9ebeb3" />
-It appears that ...
+Taking a look at the 4 boot commands, we can see the following pattern:
+
+  1. A command is executed and stored in the `status` variable
+  2. The value in that variable is sent to an IP address at a certain port via a Netcat (TCP) connection
 
 
 **4. Interacting with web configuration page on port 8080 `/config` page**
 <img width="714" height="422" alt="image" src="https://github.com/user-attachments/assets/67f24218-da2f-46d4-b9e5-b383f610f286" />
-
+We can start off by placing a bunch of structured input values into each field:
 - Notice that the value `val3` (input to "Router IP" field) appears in the boot logs:
 <img width="654" height="619" alt="image" src="https://github.com/user-attachments/assets/aca116ef-0887-4019-9c79-df517d020e3e" />
 
 - Also, we get an error message: "Failed to connect to Central Management Server at XXXX":
 <img width="654" height="309" alt="image" src="https://github.com/user-attachments/assets/71bf3e1e-5805-4d74-b473-85f0bca9d5e7" />
+We are able to learn the following from these results:
 
-This error message indicates that we have given an invalid IP address value to the "Central Management Server IP" field in the web configuration page:
+1. The input to the "Router IP" field appears directly in the boot logs
+2. The error message indicates that we have given an invalid IP address value to the "Central Management Server IP" field in the web configuration page:
 
-- Try with ; | show that it is filtered in the boot logs
+
+This presents a classic OS Command Injection vulnerability. Let's try with a few common injection inputs: `; ls`, `| la` 
+ ... show that it is filtered in the boot logs
 
 
 <img width="736" height="439" alt="image" src="https://github.com/user-attachments/assets/6760d15b-d4be-4be1-a064-cd87b7902e4b" />
