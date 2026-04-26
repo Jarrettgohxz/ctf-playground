@@ -17,7 +17,8 @@ nmap <TARGET_IP> -sS -p-
 ```
 - Note that the `-F` (fast scan) port scan option will not work
 - We have to explicitly specify the `-p-` option to scan the entire range of ports
-<img width="790" height="357" alt="image" src="https://github.com/user-attachments/assets/d771741f-5f04-4c21-92d1-9c165f396dcb" />
+<img width="792" height="356" alt="image" src="https://github.com/user-attachments/assets/7ce3dcd4-a659-49ed-a4aa-a23c220fc5ea" />
+
 
 Found ports:
 
@@ -59,7 +60,9 @@ Now, we can attempt to discover the web configuration form fields which are dire
 1. The value `val3` (input to "Router Name" field) appears in the boot logs
 2. We get an error message: "Failed to connect to Central Management Server at XXXX"
 
-<img width="659" height="103" alt="image" src="https://github.com/user-attachments/assets/cd086936-5a37-462c-befa-dca430f05d3c" />
+<img width="609" height="75" alt="image" src="https://github.com/user-attachments/assets/6f18cc01-97f5-4c34-a9e5-ee77c418d958" />
+
+
 
 We are able to learn the following from the results:
 
@@ -84,7 +87,7 @@ After submitting the form, we can navigate to the boot logs screen (port 22222) 
 1. For both the inputs to the "Router Name" field, the special shell characters (`;`, `|`) are filtered/removed
 2. The system is able to successfully connect to the "Central Management Server" 
 
-<img width="622" height="57" alt="image" src="https://github.com/user-attachments/assets/a0b49a22-b964-4464-b361-4477f7678d46" />
+<img width="749" height="186" alt="image" src="https://github.com/user-attachments/assets/9ed4a189-3060-4280-9944-cd49688c3c45" />
 
 Hmm ... we have to somehow find a way to bypass the filters, and trick the system to "break out" of the current command. Taking a look at the hint: "I wonder how we can make commands appear on the next line (url-encoded)?", this provides a hint toward the url-encoded version of the newline character: `%0a`. 
 
@@ -95,7 +98,7 @@ Let's try the following input to the "Router Name" field: `%0als -a`. We can obs
 1. A newline is shown on the boot logs screen with our custom command: `ls -a`
 2. Our listener (on port 1234) has captured an output indicating a hidden file: `.task1`
 
-<img width="659" height="71" alt="image" src="https://github.com/user-attachments/assets/0b4ba46b-c937-4f28-924c-e482554f88c6" />
+<img width="683" height="126" alt="image" src="https://github.com/user-attachments/assets/bb4bc2e1-4444-4b45-bfe0-0b9b7f6dc086" />
 <img width="438" height="89" alt="image" src="https://github.com/user-attachments/assets/b8028d4b-d88b-40bc-a1bd-922c00e96520" />
 
 Read the contents of the file: `%0a cat .task1`
@@ -108,7 +111,7 @@ With that, we have found the answer for the first task: `task2:O$_cm6_1njection`
 
 For the 2nd task, we are required to to read the content of **flag.txt**. Let's try to directly read the file using the following input ("Router Name" field): `%0a cat flag.txt`. The boot log screen shows that the command has been successfully injected. However, our listener on port 1234 does not show anything.
 
-<img width="659" height="71" alt="image" src="https://github.com/user-attachments/assets/ff655555-f2f1-423d-8137-f89bed480219" />
+<img width="683" height="126" alt="image" src="https://github.com/user-attachments/assets/60f299f3-88af-45f3-a912-f9f7bff76ae0" />
 
 Taking a look at the hint: "I wonder where we can use the found credentials?". This points us towards the SSH service running on port 22 as found previously. 
 
