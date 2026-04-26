@@ -63,7 +63,6 @@ Now, we can attempt to discover the web configuration form fields which are dire
 <img width="609" height="75" alt="image" src="https://github.com/user-attachments/assets/6f18cc01-97f5-4c34-a9e5-ee77c418d958" />
 
 
-
 We are able to learn the following from the results:
 
 1. The input to the "Router Name" field appears directly in the boot logs
@@ -147,7 +146,7 @@ $ find / -type f -perm -u=s
 We have found that the `find` binary has SUID bit set. It also happens to be owned by the **root** user:
 <img width="469" height="43" alt="image" src="https://github.com/user-attachments/assets/ed4f162d-8423-4264-989f-31c432ab962d" />
 
-- Execute custom command to activate an rbash session:
+- Execute custom command to activate an rbash session as the **root** user:
 
 ```shell
 find . -exec rbash -p\; -quit
@@ -168,9 +167,9 @@ There exists a useful site that provides a list of techniques for privilege esca
 
 
 # Important learning points
-1. Identify OS command injection points and fuzzing to discover "entry point"
-  - Using url-encoded newline (`%0a`) to bypass filters
-  - Understanding how to exfiltrate data from the system
+1. Identify OS command injection points and perform fuzzing to discover "entry point"
+  - using url-encoded newline (`%0a`) to bypass filters
+  - understanding how to exfiltrate data from the system
 2.  Perform privilege escalation
   - enumerating for privilege escalation vectors
   - understand how unsafe SUID permissions on a binary/file can be exploited 
