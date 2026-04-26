@@ -44,6 +44,7 @@ We are able to observe the following pattern:
 
   1. A command is executed and stored in the `status` variable
   2. The value in that variable is sent to an IP address on port 1234 via a Netcat (TCP) connection
+     - This provides an exfiltration path for us
 
 Given that an attacker is able to control the values inserted directly into the boot logs, they will be able to maliciously inject commands that may be executed by the system. This presents a classic case of OS command injection.
 
@@ -163,7 +164,13 @@ There exists a useful site that provides a list of techniques for privilege esca
 <img width="830" height="88" alt="image" src="https://github.com/user-attachments/assets/ec39db4c-30ea-4532-b779-30c1e4fde411" />
 
 
-
+# Important learning points
+1. Identify OS command injection points and fuzzing to discover "entry point"
+  - Using url-encoded newline (`%0a`) to bypass filters
+  - Understanding how to exfiltrate data from the system
+2.  Perform privilege escalation
+  - enumerating for privilege escalation vectors
+  - understand how unsafe SUID permissions on a binary/file can be exploited 
 
 
 
